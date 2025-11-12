@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门一日游精华攻略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        /* 导航栏 */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-left a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .nav-left a:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 2px 10px rgba(255,255,255,0.5);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            padding: 8px 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            color: white;
+            outline: none;
+            width: 200px;
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-box button {
+            border: none;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* 头部横幅 */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: url('背景.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102,126,234,0.7) 0%, rgba(118,75,162,0.7) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 主要内容 */
+        .container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 50px;
+        }
+
+        /* 旅游方案卡片 */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102,126,234,0.3);
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .plan-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .plan-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .plan-card:hover .plan-image img {
+            transform: scale(1.1);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .plan-content {
+            padding: 30px;
+        }
+
+        .plan-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .plan-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .plan-description {
+            color: #718096;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .plan-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .plan-tag {
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .plan-arrow {
+            color: #667eea;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .plan-card:hover .plan-arrow {
+            transform: translateX(5px);
+        }
+
+        /* 景点滚动 */
+        .attractions-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        .attractions-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .scroll-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-content {
+            display: flex;
+            gap: 25px;
+            animation: scroll 25s linear infinite;
+        }
+
+        .scroll-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-300px * 6 - 45px * 6 ));
+            }
+        }
+
+        .attraction-card {
+            flex-shrink: 0;
+            width: 320px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .attraction-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .attraction-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .attraction-card:hover .attraction-image img {
+            transform: scale(1.05);
+        }
+
+        .attraction-info {
+            padding: 20px;
+        }
+
+        .attraction-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .attraction-desc {
+            font-size: 14px;
+            color: #718096;
+            line-height: 1.5;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            nav {
+                padding: 15px 20px;
+            }
+            
+            .attraction-card {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-left">
+            <a href="#home">首页</a>
+            <a href="#plans">旅游方案</a>
+            <a href="#attractions">景点推荐</a>
+            <a href="#about">关于我们</a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="搜索景点、攻略...">
+            <button>🔍</button>
+        </div>
+    </nav>
+
+    <!-- 头部横幅 -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>澳门一日游攻略，穿梭中西，体验双面魅力</h1>
+            <p>探索东方拉斯维加斯的魅力 · 感受中西文化交融</p>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <h2 class="section-title">精选旅游方案</h2>
+        
+        <div class="plans-grid">
+            <!-- 方案A -->
+            <div class="plan-card" onclick="location.href='plan-a.html'">
+                <div class="plan-image">
+                    <img src="家庭周末特惠.jpg" alt="澳门周末游">
+                    <div class="plan-badge">周末特惠</div>
+                </div>
+                <div class="plan-content">
+                    <span class="plan-label">方案A</span>
+                    <h3 class="plan-title">聪明爸妈的选择：澳门周末游，免计划&免押金，说走就走！</h3>
+                    <p class="plan-description">专为家庭设计的轻松周末游，无需复杂规划，带上孩子说走就走，享受澳门独特的亲子时光。</p>
+                    <div class="plan-footer">
+                        <span class="plan-tag">🎯 短窗口期高效预订、配套服务省心、价格优势</span>
+                        <span class="plan-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 方案B -->
+            <div class="plan-card" onclick="location.href='plan-b.html'">
+                <div class="plan-image">
+                    <img src="家庭旅游.png" alt="葡式文化">
+                    <div class="plan-badge">亲子奇遇</div>
+                </div>
+                <div class="plan-content">
+                    <span class="plan-label">方案B</span>
+                    <h3 class="plan-title">澳门周末奇遇记：不止是住宿，是孩子的葡式文化探索之旅！</h3>
+                    <p class="plan-description">深度体验葡式文化，让孩子在旅行中学习成长，探索澳门独特的中西文化交融之美。</p>
+                    <div class="plan-footer">
+                        <span class="plan-tag">🎨 儿童专属体验项目、主题化服务、亲子场景</span>
+                        <span class="plan-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 方案C -->
+            <div class="plan-card" onclick="location.href='plan-c.html'">
+                <div class="plan-image">
+                    <img src="AI.jpg" alt="AI智能规划">
+                    <div class="plan-badge">AI智能</div>
+                </div>
+                <div class="plan-content">
+                    <span class="plan-label">AI方案</span>
+                    <h3 class="plan-title">AI智能规划！澳门一日游攻略：不绕路、不踩雷，打卡效率拉满</h3>
+                    <p class="plan-description">利用AI智能算法，为您规划最优游览路线，节省时间，提高效率，玩转澳门每个角落。</p>
+                    <div class="plan-footer">
+                        <span class="plan-tag">🤖 智能路线</span>
+                        <span class="plan-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 方案D -->
+            <div class="plan-card" onclick="location.href='plan-d.html'">
+                <div class="plan-image">
+                    <img src="旅行社.jpg" alt="导游讲解">
+                    <div class="plan-badge">深度游</div>
+                </div>
+                <div class="plan-content">
+                    <span class="plan-label">旅行社方案</span>
+                    <h3 class="plan-title">不止打卡！旅行社澳门一日游：解锁葡式烟火气听导游讲景点背后的故事</h3>
+                    <p class="plan-description">专业导游带队，深入了解每个景点背后的历史故事，感受真正的澳门文化底蕴。</p>
+                    <div class="plan-footer">
+                        <span class="plan-tag">📖 故事讲解</span>
+                        <span class="plan-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 景点滚动推荐 -->
+    <div class="attractions-section">
+        <h2 class="attractions-title">热门景点推荐</h2>
+        <div class="scroll-container">
+            <div class="scroll-content">
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="大三巴.png" alt="大三巴牌坊">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">大三巴牌坊</h4>
+                        <p class="attraction-desc">澳门标志性建筑，见证中西文化交融的历史遗迹</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="澳门威尼斯人.png" alt="威尼斯人">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">威尼斯人度假村</h4>
+                        <p class="attraction-desc">体验意式风情，欣赏精彩表演和购物天堂</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="澳门旅游塔.png" alt="澳门塔">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">澳门旅游塔</h4>
+                        <p class="attraction-desc">338米高空观景，体验刺激的蹦极和空中漫步</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="官也街.png" alt="官也街">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">官也街</h4>
+                        <p class="attraction-desc">手信铺蒸腾着杏仁饼香气，木糠布丁与猪扒包的双重诱惑</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="澳门巴黎人.png" alt="巴黎人度假村">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">巴黎人度假村</h4>
+                        <p class="attraction-desc">刺破赌城天际线，塞纳河光影秀</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=400" alt="妈阁庙">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">妈阁庙</h4>
+                        <p class="attraction-desc">澳门最古老的寺庙，澳门名称的由来之地</p>
+                    </div>
+                </div>
+
+                <!-- 重复一遍实现无缝滚动 -->
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="大三巴.png" alt="大三巴牌坊">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">大三巴牌坊</h4>
+                        <p class="attraction-desc">澳门标志性建筑，见证中西文化交融的历史遗迹</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="澳门威尼斯人.png" alt="威尼斯人">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">威尼斯人度假村</h4>
+                        <p class="attraction-desc">体验意式风情，欣赏精彩表演和购物天堂</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="澳门旅游塔.png" alt="澳门塔">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">澳门旅游塔</h4>
+                        <p class="attraction-desc">338米高空观景，体验刺激的蹦极和空中漫步</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="官也街.png" alt="官也街">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">官也街</h4>
+                        <p class="attraction-desc">手信铺蒸腾着杏仁饼香气，木糠布丁与猪扒包的双重诱惑</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="澳门巴黎人.png" alt="巴黎人度假村">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">巴黎人度假村</h4>
+                        <p class="attraction-desc">刺破赌城天际线，塞纳河光影秀</p>
+                    </div>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=400" alt="妈阁庙">
+                    </div>
+                    <div class="attraction-info">
+                        <h4 class="attraction-name">妈阁庙</h4>
+                        <p class="attraction-desc">澳门最古老的寺庙，澳门名称的由来之地</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

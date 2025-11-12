@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门一日游精华攻略 - 穿梭中西，体验双面魅力</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            padding: 8px 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box input {
+            background: none;
+            border: none;
+            color: white;
+            outline: none;
+            width: 200px;
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* 主内容区 */
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 30px;
+        }
+
+        /* 头部横幅 */
+        .hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 30px;
+            padding: 80px 60px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+
+        /* 路线概览 */
+        .route-overview {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .route-overview h2 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .route-path {
+            font-size: 20px;
+            color: #636e72;
+            font-weight: 500;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 15px;
+        }
+
+        /* 时间段卡片 */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .time-card {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+        }
+
+        .morning::before {
+            background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .afternoon::before {
+            background: linear-gradient(90deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .evening::before {
+            background: linear-gradient(90deg, #a8c0ff 0%, #3f2b96 100%);
+        }
+
+        .time-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .time-icon {
+            font-size: 50px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .time-title h2 {
+            font-size: 36px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .time-subtitle {
+            color: #636e72;
+            font-size: 18px;
+        }
+
+        /* 景点列表 */
+        .attraction {
+            margin-bottom: 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .attraction:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .attraction h3 {
+            font-size: 24px;
+            color: #2d3436;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .attraction-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .attraction ul {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .attraction li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #2d3436;
+        }
+
+        .attraction li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #f093fb;
+            font-size: 18px;
+        }
+
+        /* 美食推荐 */
+        .food-section {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .food-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .food-item:hover {
+            transform: scale(1.05);
+        }
+
+        .food-emoji {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .food-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+
+        .food-desc {
+            font-size: 14px;
+            color: #636e72;
+        }
+
+        /* 提示卡片 */
+        .tips-section {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            border-radius: 25px;
+            padding: 50px;
+            margin-top: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+
+        .tips-section h2 {
+            font-size: 32px;
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .tip-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-icon {
+            font-size: 24px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 50px 30px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .time-card {
+                padding: 30px 20px;
+            }
+
+            .search-box input {
+                width: 150px;
+            }
+        }
+
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 底部 */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>🏰</span>
+                <span>澳门一日游</span>
+            </div>
+            <div class="nav-links">
+                <a href="#morning">上午</a>
+                <a href="#afternoon">下午</a>
+                <a href="#evening">傍晚</a>
+                <a href="#tips">贴心提示</a>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索景点...">
+                    <button>🔍</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <div class="container">
+        <!-- 头部横幅 -->
+        <div class="hero">
+            <h1>澳门一日游AI攻略</h1>
+            <p>穿梭中西，体验双面魅力 🎭</p>
+        </div>
+
+        <!-- 路线概览 -->
+        <div class="route-overview">
+            <h2>📍 核心路线</h2>
+            <div class="route-path">
+                澳门半岛 (历史文化) → 路氹城 (娱乐购物) → 返回半岛或口岸
+            </div>
+        </div>
+
+        <!-- 上午行程 -->
+        <section id="morning" class="section">
+            <div class="time-card morning">
+                <div class="time-header">
+                    <div class="time-icon">🌅</div>
+                    <div class="time-title">
+                        <h2>上午 (9:00 - 12:30)</h2>
+                        <div class="time-subtitle">澳门半岛 - 世界文化遗产之旅</div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
+                    <strong>🚌 起点建议：</strong> 从拱北口岸（关闸）或青茂口岸入境后，直接乘坐前往「新葡京」或「大三巴」的免费赌场接驳车。
+                </div>
+
+                <div class="attraction">
+                    <h3><span class="attraction-number">1</span>议事亭前地 & 民政总署大楼</h3>
+                    <p><strong>⏰ 时间：</strong> 9:30-10:00</p>
+                    <ul>
+                        <li>从新葡京步行约10分钟即可到达</li>
+                        <li>经典的葡式碎石地面和欧风建筑</li>
+                        <li>拍照的绝佳起点，感受异国情调</li>
+                    </ul>
+                </div>
+
+                <div class="attraction">
+                    <h3><span class="attraction-number">2</span>玫瑰堂 & 大三巴牌坊</h3>
+                    <p><strong>⏰ 时间：</strong> 10:00-11:00</p>
+                    <ul>
+                        <li>沿着指示牌从议事亭前地走向澳门地标</li>
+                        <li>途经明亮的黄色玫瑰堂，可进去感受宁静氛围</li>
+                        <li>大三巴牌坊必到打卡，正面和侧面都是好角度</li>
+                        <li>牌坊后方有天主教艺术博物馆和墓室</li>
+                    </ul>
+                </div>
+
+                <div class="attraction">
+                    <h3><span class="attraction-number">3</span>大炮台 & 澳门博物馆</h3>
+                    <p><strong>⏰ 时间：</strong> 11:00-11:30</p>
+                    <ul>
+                        <li>从大三巴右侧斜坡登上大炮台</li>
+                        <li>俯瞰整个半岛的绝佳制高点</li>
+                        <li>澳门博物馆可选（约需1小时，时间紧可略过）</li>
+                    </ul>
+                </div>
+
+                <div class="food-section">
+                    <h3 style="font-size: 24px; color: #2d3436; margin-bottom: 15px;">🍽️ 午餐：品尝地道澳葡美食 (11:30-12:30)</h3>
+                    <p style="margin-bottom: 20px;"><strong>推荐区域：</strong> 大三巴脚下的手信街或新马路一带</p>
+                    
+                    <div class="food-grid">
+                        <div class="food-item">
+                            <div class="food-emoji">🥖</div>
+                            <div class="food-name">猪扒包</div>
+                            <div class="food-desc">澳门经典小吃</div>
+                        </div>
+                        <div class="food-item">
+                            <div class="food-emoji">🥧</div>
+                            <div class="food-name">葡式蛋挞</div>
+                            <div class="food-desc">安德鲁或玛嘉烈</div>
+                        </div>
+                        <div class="food-item">
+                            <div class="food-emoji">🦀</div>
+                            <div class="food-name">水蟹粥</div>
+                            <div class="food-desc">鲜甜美味</div>
+                        </div>
+                        <div class="food-item">
+                            <div class="food-emoji">🍲</div>
+                            <div class="food-name">咖喱牛杂</div>
+                            <div class="food-desc">街头美味</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 20px;"><strong>🏪 餐厅选择：</strong> 金美食（猪扒包、捞面）、黄枝记（云吞面）、义顺牛奶公司（双皮奶）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下午行程 -->
+        <section id="afternoon" class="section">
+            <div class="time-card afternoon">
+                <div class="time-header">
+                    <div class="time-icon">☀️</div>
+                    <div class="time-title">
+                        <h2>下午 (13:00 - 17:30)</h2>
+                        <div class="time-subtitle">路氹城 - 现代奢华与娱乐之都</div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
+                    <strong>🚌 交通：</strong> 从新葡京、英皇娱乐场附近乘坐前往路氹城（威尼斯人、巴黎人、伦敦人等）的免费接驳车
+                </div>
+
+                <h3 style="font-size: 28px; margin-bottom: 25px; color: #2d3436;">✨ 首选推荐：三大综合体一线游 (13:30-17:00)</h3>
+                <p style="margin-bottom: 25px; background: rgba(255,255,255,0.5); padding: 15px; border-radius: 10px;">💡 这几个综合度假村通过天桥彼此相连，可以一次性体验</p>
+
+                <div class="attraction">
+                    <h3><span class="attraction-number">1</span>伦敦人 🇬🇧</h3>
+                    <ul>
+                        <li>外观复刻大本钟、国会大厦等英国地标</li>
+                        <li>英伦风情十足，非常适合拍照</li>
+                    </ul>
+                </div>
+
+                <div class="attraction">
+                    <h3><span class="attraction-number">2</span>威尼斯人 🛶</h3>
+                    <ul>
+                        <li>必去景点！乘坐贡多拉船游览仿造运河</li>
+                        <li>圣马可广场上感受威尼斯水乡风情</li>
+                        <li>头顶永远是蓝天白云的穹顶非常梦幻</li>
+                        <li>大运河购物中心是最有名的购物场所</li>
+                    </ul>
+                </div>
+
+                <div class="attraction">
+                    <h3><span class="attraction-number">3</span>巴黎人 🗼</h3>
+                    <ul>
+                        <li>标志性巴黎铁塔（可购票登塔观赏路氹城全景）</li>
+                        <li>前面的花园是拍照最佳机位</li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); padding: 25px; border-radius: 15px; margin-top: 30px;">
+                    <h3 style="font-size: 22px; margin-bottom: 15px;">🛍️ 购物与闲逛</h3>
+                    <p>这几个度假村里都有巨大的购物中心，从奢侈品到平价品牌一应俱全。威尼斯人的大运河购物中心是最有名的。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 傍晚行程 -->
+        <section id="evening" class="section">
+            <div class="time-card evening">
+                <div class="time-header">
+                    <div class="time-icon">🌆</div>
+                    <div class="time-title">
+                        <h2>傍晚 & 夜晚 (18:00 - 21:00)</h2>
+                        <div class="time-subtitle">璀璨夜景与精彩表演</div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                    <div style="background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); padding: 30px; border-radius: 20px; color: white;">
+                        <h3 style="font-size: 24px; margin-bottom: 15px;">选项一：路氹城夜景 ✨</h3>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 10px;">🎆 等待华灯初上，欣赏璀璨夜景</li>
+                            <li style="margin-bottom: 10px;">⛲ 永利皇宫喷泉表演和观光缆车</li>
+                            <li>🎭 美高梅大堂天幕广场</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%); padding: 30px; border-radius: 20px; color: white;">
+                        <h3 style="font-size: 24px; margin-bottom: 15px;">选项二：半岛夜游 🌃</h3>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 10px;">🚌 乘免费接驳车返回半岛</li>
+                            <li style="margin-bottom: 10px;">🏛️ 渔人码头仿古罗马建筑</li>
+                            <li style="margin-bottom: 10px;">🗼 登旅游塔欣赏全景</li>
+                            <li>🍜 地道餐厅享用晚餐</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,0,0,0.1); padding: 25px; border-radius: 15px; margin-top: 30px; border-left: 5px solid #e74c3c;">
+                    <h3 style="color: #e74c3c; margin-bottom: 15px;">⚠️ 返程交通重要提示</h3>
+                    <p>从任何大型娱乐场（新葡京、十六浦、金沙、上葡京等）都可乘坐免费接驳车返回<strong>拱北口岸（关闸）</strong>或<strong>横琴口岸</strong>。</p>
+                    <p style="margin-top: 10px;"><strong>⏰ 务必在晚上21:30之前乘车，以免错过末班车！</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 贴心提示 -->
+        <section id="tips" class="tips-section">
+            <h2>💡 贴心提示</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><span class="tip-icon">📋</span> 证件</h3>
+                    <p>确保港澳通行证及签注有效</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">💰</span> 货币</h3>
+                    <p>澳元（MOP）和港币（HKD）通用（1:1），支持支付宝、微信支付和刷卡，只需换少量现金</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">🚌</span> 交通</h3>
+                    <p>善用免费接驳车最经济便捷，市内公交为6 MOP/人</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">📱</span> 网络</h3>
+                    <p>提前购买澳门流量包或开通国际漫游</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">🗺️</span> 导航</h3>
+                    <p>使用Google Maps或百度地图非常准确</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">👟</span> 体力</h3>
+                    <p>一天步行量很大，务必穿一双舒适的鞋子</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+        <p style="font-size: 18px; margin-bottom: 10px;">✨ 祝您在澳门度过愉快的一天！✨</p>
+        <p style="font-size: 14px; opacity: 0.9;">© 2024 澳门一日游精华攻略 | 穿梭中西，体验双面魅力</p>
+    </footer>
+</body>
+</html>

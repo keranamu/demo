@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳門一日遊 | 超豐富行程推介懶人包跑勻15站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warm-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --cool-gradient: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            --sunset-gradient: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans TC', sans-serif;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 0.6rem 2.5rem 0.6rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 200px;
+        }
+
+        .search-box input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--primary-gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 主要内容区域 */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* 导航菜单 */
+        .quick-nav {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .quick-nav h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .nav-item {
+            padding: 1rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 景点卡片 */
+        .attraction-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            scroll-margin-top: 100px;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .card-header.gradient-1::before { background: var(--primary-gradient); }
+        .card-header.gradient-2::before { background: var(--secondary-gradient); }
+        .card-header.gradient-3::before { background: var(--accent-gradient); }
+        .card-header.gradient-4::before { background: var(--warm-gradient); }
+        .card-header.gradient-5::before { background: var(--cool-gradient); }
+        .card-header.gradient-6::before { background: var(--sunset-gradient); }
+
+        .card-number {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gradient-1 .card-number { background: var(--primary-gradient); }
+        .gradient-2 .card-number { background: var(--secondary-gradient); }
+        .gradient-3 .card-number { background: var(--accent-gradient); }
+        .gradient-4 .card-number { background: var(--warm-gradient); }
+        .gradient-5 .card-number { background: var(--cool-gradient); }
+        .gradient-6 .card-number { background: var(--sunset-gradient); }
+
+        .card-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #e17055;
+            margin: 1.5rem 0;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            padding: 1rem;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .highlight-item::before {
+            content: '✨';
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 底部 */
+        footer {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 滚动动画 */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">🇲🇴 澳門一日遊</div>
+            <div class="nav-links">
+                <a href="#attractions">景點導覽</a>
+                <a href="#food">美食推薦</a>
+                <a href="#tips">旅遊貼士</a>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索景點...">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>澳門一日遊超豐富行程</h1>
+            <p>由朝玩到黑 · 跑勻15站 · 時間管理大師專用懶人包</p>
+            <a href="#attractions" class="cta-button">開始探索 →</a>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 快速导航 -->
+        <div class="quick-nav" id="attractions">
+            <h2>📍 行程快速導覽</h2>
+            <div class="nav-grid">
+                <a href="#stop1" class="nav-item">第1站：出發飛航</a>
+                <a href="#stop2" class="nav-item">第2站：世記咖啡</a>
+                <a href="#stop3" class="nav-item">第3站：澳門飛索</a>
+                <a href="#stop4" class="nav-item">第4站：東望洋燈塔</a>
+                <a href="#stop5" class="nav-item">第5站：VR體驗館</a>
+                <a href="#stop6" class="nav-item">第6站：瘋堂+大三巴</a>
+                <a href="#stop7" class="nav-item">第7站：澳門旅遊塔</a>
+                <a href="#stop8" class="nav-item">第8站：旋轉餐廳</a>
+                <a href="#stop9" class="nav-item">第9站：teamLab</a>
+                <a href="#stop10" class="nav-item">第10站：官也街</a>
+                <a href="#stop11" class="nav-item">第11站：8字摩天輪</a>
+                <a href="#stop12" class="nav-item">第12站：澳門巴黎人</a>
+                <a href="#stop13" class="nav-item">第13站：童夢天地</a>
+                <a href="#stop14" class="nav-item">第14站：自助晚餐</a>
+                <a href="#stop15" class="nav-item">第15站：回程飛航</a>
+            </div>
+        </div>
+
+        <!-- 第1站 -->
+        <div class="attraction-card fade-in" id="stop1">
+            <div class="card-header gradient-1">
+                <span class="card-number">第1站</span>
+                <h2 class="card-title">🚢 飛航前往澳門</h2>
+            </div>
+            <div class="card-body">
+                <img src="飛航前往澳門.jpg" alt="船票" class="card-image">
+                <p class="card-description">
+                    從香港上環或尖沙咀出發，乘搭金光飛航或噴射飛航前往澳門。建議預訂早上8-9點的船班，可以有更充裕時間遊玩。船程約1小時，享受海上風光。
+                </p>
+                <div class="info-box">
+                    <strong>⏰ 建議時間：</strong>
+                    上午 8:00 - 9:00 出發
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">快速便捷</div>
+                    <div class="highlight-item">舒適座位</div>
+                    <div class="highlight-item">海景優美</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第2站 -->
+        <div class="attraction-card fade-in" id="stop2">
+            <div class="card-header gradient-2">
+                <span class="card-number">第2站</span>
+                <h2 class="card-title">☕ 世記咖啡早餐</h2>
+            </div>
+            <div class="card-body">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop" alt="咖啡早餐" class="card-image">
+                <p class="card-description">
+                    世記咖啡是澳門老字號茶餐廳，以地道港式早餐聞名。推薦必點豬扒包、奶茶和蛋撻，感受最正宗的澳門早晨風味。這裡的豬扒包外脆內嫩，配上滑蛋和厚切豬扒，絕對是完美的一天開始！
+                </p>
+                <div class="info-box">
+                    <strong>📍 地址：</strong>
+                    澳門新馬路十月初五街
+                    <br>
+                    <strong>⏰ 營業時間：</strong>
+                    07:00 - 18:00
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">招牌豬扒包</div>
+                    <div class="highlight-item">港式奶茶</div>
+                    <div class="highlight-item">地道風味</div>
+                    <div class="highlight-item">老字號</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第3站 -->
+        <div class="attraction-card fade-in" id="stop3">
+            <div class="card-header gradient-3">
+                <span class="card-number">第3站</span>
+                <h2 class="card-title">🎢 澳門飛索體驗</h2>
+            </div>
+            <div class="card-body">
+                <img src="澳門飛索體驗.jpg" alt="飛索" class="card-image">
+                <p class="card-description">
+                    在澳門旅遊塔體驗刺激的高空飛索！從233米高空飛越，以時速75公里滑行，俯瞰整個澳門半島和珠江口美景。全程約20秒，帶來難忘的腎上腺素激增體驗！
+                </p>
+                <div class="info-box">
+                    <strong>💰 參考價格：</strong>
+                    約 MOP 788
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    10:00 - 11:00
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">233米高空</div>
+                    <div class="highlight-item">時速75公里</div>
+                    <div class="highlight-item">絕美景觀</div>
+                    <div class="highlight-item">專業安全</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第4站 -->
+        <div class="attraction-card fade-in" id="stop4">
+            <div class="card-header gradient-4">
+                <span class="card-number">第4站</span>
+                <h2 class="card-title">🗼 東望洋燈塔</h2>
+            </div>
+            <div class="card-body">
+                <img src="東望洋燈塔.jpg" alt="燈塔" class="card-image">
+                <p class="card-description">
+                    東望洋燈塔是澳門的地標建築之一，建於1865年，是中國沿海最古老的現代燈塔。登上燈塔山頂，可以360度俯瞰澳門市區和海景，天氣好時還能看到珠海。這裡也是拍照打卡的絕佳地點！
+                </p>
+                <div class="info-box">
+                    <strong>📍 位置：</strong>
+                    東望洋山山頂
+                    <br>
+                    <strong>🎫 門票：</strong>
+                    免費參觀
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    11:30 - 12:30
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">歷史建築</div>
+                    <div class="highlight-item">360度景觀</div>
+                    <div class="highlight-item">絕佳拍照點</div>
+                    <div class="highlight-item">免費參觀</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第5站 -->
+        <div class="attraction-card fade-in" id="stop5">
+            <div class="card-header gradient-5">
+                <span class="card-number">第5站</span>
+                <h2 class="card-title">🎮 Sandbox VR 魷魚遊戲體驗</h2>
+            </div>
+            <div class="card-body">
+                <img src="Sandbox VR 魷魚遊戲體驗.jpg" alt="VR體驗" class="card-image">
+                <p class="card-description">
+                    全球最先進的VR體驗館！獨家體驗《魷魚遊戲：虛擬對決》，全身動作捕捉技術讓你完全沉浸在遊戲世界。與朋友一起挑戰經典關卡，感受超真實的互動體驗。每場約30分鐘，支持2-6人同時遊玩。
+                </p>
+                <div class="info-box">
+                    <strong>📍 地址：</strong>
+                    澳門新濠天地
+                    <br>
+                    <strong>💰 參考價格：</strong>
+                    約 MOP 398/人
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    13:00 - 13:30
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">全身動捕</div>
+                    <div class="highlight-item">熱門IP</div>
+                    <div class="highlight-item">多人互動</div>
+                    <div class="highlight-item">超真實體驗</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第6站 -->
+        <div class="attraction-card fade-in" id="stop6">
+            <div class="card-header gradient-6">
+                <span class="card-number">第6站</span>
+                <h2 class="card-title">🎨 瘋堂斜巷 + 大三巴牌坊</h2>
+            </div>
+            <div class="card-body">
+                <img src="瘋堂斜巷 + 大三巴牌坊.jpg" alt="大三巴" class="card-image">
+                <p class="card-description">
+                    先遊覽色彩繽紛的瘋堂斜巷，這裡有許多特色小店、咖啡館和藝術工作室，是文青必訪之地。然後前往澳門最著名的地標——大三巴牌坊，這座400多年歷史的建築遺跡是世界文化遺產，也是澳門最受歡迎的拍照景點。
+                </p>
+                <div class="info-box">
+                    <strong>📍 路線：</strong>
+                    瘋堂斜巷 → 大三巴牌坊（步行約10分鐘）
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    14:00 - 15:30
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">文青打卡地</div>
+                    <div class="highlight-item">世界遺產</div>
+                    <div class="highlight-item">歷史建築</div>
+                    <div class="highlight-item">特色小店</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第7站 -->
+        <div class="attraction-card fade-in" id="stop7">
+            <div class="card-header gradient-1">
+                <span class="card-number">第7站</span>
+                <h2 class="card-title">🌆 澳門旅遊塔極限運動</h2>
+            </div>
+            <div class="card-body">
+                <img src="澳門旅遊塔極限運動.png" alt="旅遊塔" class="card-image">
+                <p class="card-description">
+                    在338米高的澳門旅遊塔挑戰極限！可選擇笨豬跳（全球最高商業蹦極）或空中漫步（在塔外圍步行）。如果不想太刺激，也可以登上觀光層，在360度全景觀景台欣賞澳門美景，或在旋轉餐廳享用下午茶。
+                </p>
+                <div class="info-box">
+                    <strong>💰 參考價格：</strong>
+                    笨豬跳 MOP 3,588 / 空中漫步 MOP 788 / 觀光層 MOP 165
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    15:30 - 17:00
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">全球最高蹦極</div>
+                    <div class="highlight-item">空中漫步</div>
+                    <div class="highlight-item">360度景觀</div>
+                    <div class="highlight-item">旋轉餐廳</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第8站 -->
+        <div class="attraction-card fade-in" id="stop8">
+            <div class="card-header gradient-2">
+                <span class="card-number">第8站</span>
+                <h2 class="card-title">🍽️ 360°旋轉餐廳自助午餐</h2>
+            </div>
+            <div class="card-body">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=400&fit=crop" alt="旋轉餐廳" class="card-image">
+                <p class="card-description">
+                    在澳門旅遊塔的360°旋轉餐廳享用豐盛自助餐，餐廳每72分鐘旋轉一圈，讓你在用餐的同時欣賞澳門全景。自助餐提供國際美食、海鮮、甜品等豐富選擇，是獨特的高空用餐體驗。
+                </p>
+                <div class="info-box">
+                    <strong>💰 參考價格：</strong>
+                    午餐約 MOP 398/人
+                    <br>
+                    <strong>⏰ 用餐時間：</strong>
+                    17:00 - 18:30
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">360度旋轉</div>
+                    <div class="highlight-item">國際自助餐</div>
+                    <div class="highlight-item">高空美景</div>
+                    <div class="highlight-item">豐富選擇</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第9站 -->
+        <div class="attraction-card fade-in" id="stop9">
+            <div class="card-header gradient-3">
+                <span class="card-number">第9站</span>
+                <h2 class="card-title">✨ teamLab 超自然空間</h2>
+            </div>
+            <div class="card-body">
+                <img src="teamLab 超自然空間.jpg" alt="teamLab" class="card-image">
+                <p class="card-description">
+                    走進teamLab的夢幻數位藝術世界！超過8000平方米的沉浸式互動空間，包括無邊界瀑布、漂浮花園、水晶宇宙等多個展區。光影與藝術完美結合，每個角落都是絕佳打卡點。建議預留至少2小時慢慢欣賞。
+                </p>
+                <div class="info-box">
+                    <strong>📍 地址：</strong>
+                    澳門威尼斯人
+                    <br>
+                    <strong>💰 參考價格：</strong>
+                    約 MOP 238/人
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    18:30 - 20:30
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">沉浸式體驗</div>
+                    <div class="highlight-item">光影藝術</div>
+                    <div class="highlight-item">互動展區</div>
+                    <div class="highlight-item">打卡勝地</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第10站 -->
+        <div class="attraction-card fade-in" id="stop10">
+            <div class="card-header gradient-4">
+                <span class="card-number">第10站</span>
+                <h2 class="card-title">🍔 官也街美食街</h2>
+            </div>
+            <div class="card-body">
+                <img src="官也街美食街.jpg" alt="官也街" class="card-image">
+                <p class="card-description">
+                    官也街是氹仔最熱鬧的美食街，必吃大利來記豬扒包、莫義記榴槤雪糕和誠昌飯店水蟹粥。這裡也是購買手信的好地方，鉅記餅家、咀香園等老字號手信店林立，可以買到杏仁餅、蛋卷、肉乾等特色伴手禮。
+                </p>
+                <div class="info-box">
+                    <strong>📍 位置：</strong>
+                    澳門氹仔官也街
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    20:30 - 21:30
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">豬扒包</div>
+                    <div class="highlight-item">榴槤雪糕</div>
+                    <div class="highlight-item">手信一條街</div>
+                    <div class="highlight-item">地道美食</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第11站 -->
+        <div class="attraction-card fade-in" id="stop11">
+            <div class="card-header gradient-5">
+                <span class="card-number">第11站</span>
+                <h2 class="card-title">🎡 新濠影匯8字摩天輪</h2>
+            </div>
+            <div class="card-body">
+                <img src="新濠影匯8字摩天輪.jpg" alt="8字摩天輪" class="card-image">
+                <p class="card-description">
+                    全球首個8字形摩天輪！位於新濠影匯酒店，高130米，獨特的8字造型成為澳門新地標。乘坐觀景車廂緩緩升至最高點，可以俯瞰氹仔和路氹城市景觀，特別是夜晚燈光璀璨，景色格外迷人。
+                </p>
+                <div class="info-box">
+                    <strong>💰 參考價格：</strong>
+                    約 MOP 100/人
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    21:30 - 22:00
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">全球首創</div>
+                    <div class="highlight-item">8字造型</div>
+                    <div class="highlight-item">夜景迷人</div>
+                    <div class="highlight-item">浪漫體驗</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第12站 -->
+        <div class="attraction-card fade-in" id="stop12">
+            <div class="card-header gradient-6">
+                <span class="card-number">第12站</span>
+                <h2 class="card-title">🗼 澳門巴黎人鐵塔</h2>
+            </div>
+            <div class="card-body">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&h=400&fit=crop" alt="巴黎鐵塔" class="card-image">
+                <p class="card-description">
+                    澳門版艾菲爾鐵塔，按原塔1:2比例打造，高162米。夜晚時分，鐵塔燈光秀璀璨奪目，配合音樂演出，營造浪漫法式風情。可以登塔參觀，在7樓和37樓觀景台欣賞澳門夜景，或在塔下的巴黎人購物中心逛街。
+                </p>
+                <div class="info-box">
+                    <strong>💰 參考價格：</strong>
+                    登塔 MOP 100/人
+                    <br>
+                    <strong>⏰ 建議時間：</strong>
+                    22:00 - 22:30
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">1:2復刻鐵塔</div>
+                    <div class="highlight-item">燈光秀</div>
+                    <div class="highlight-item">浪漫夜景</div>
+                    <div class="highlight-item">購物中心</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第13站 -->
+        <div class="attraction-card fade-in" id="stop13">
+            <div class="card-header gradient-1">
+                <span class="card-number">第13站</span>
+                <h2 class="card-title">🎪 新濠天地 KIDS' CITY 童夢天地</h2>
+            </div>
+            <div class="card-body">
+                <img src="新濠天地 KIDS' CITY 童夢天地.jpg" alt="童夢天地" class="card-image">
+                <p class="card-description">
+                    亞洲最大室內遊樂場之一！佔地17,000平方呎，分為創意學習區、角色扮演區、繩網攀爬區等多個主題區域。適合親子遊玩，小朋友可以在安全的環境中盡情玩耍，家長也能放心休息。還有多款互動遊戲和教育性活動。
+                </p>
+                <div class="info-box">
+                    <strong>📍 位置：</strong>
+                    新濠天地
+                    <br>
+                    <strong>💰 參考價格：</strong>
+                    約 MOP 150/小童
+                    <br>
+                    <strong>⏰ 適合時間：</strong>
+                    如帶小孩可安排下午時段
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">室內遊樂場</div>
+                    <div class="highlight-item">親子活動</div>
+                    <div class="highlight-item">多主題區域</div>
+                    <div class="highlight-item">寓教於樂</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第14站 -->
+        <div class="attraction-card fade-in" id="stop14">
+            <div class="card-header gradient-2">
+                <span class="card-number">第14站</span>
+                <h2 class="card-title">🍴 上葡京酒店自助晚餐</h2>
+            </div>
+            <div class="card-body">
+                <img src="葡京酒店自助晚餐.jpg" alt="自助晚餐" class="card-image">
+                <p class="card-description">
+                    在上葡京酒店的「自助山」餐廳享用豪華自助晚餐，作為一天行程的完美ending。餐廳提供超過200款環球美食，包括新鮮海鮮、現場烹調美食、日式料理、中式點心和精緻甜品。現代化的用餐環境，服務品質優秀。
+                </p>
+                <div class="info-box">
+                    <strong>💰 參考價格：</strong>
+                    晚餐約 MOP 398/人起
+                    <br>
+                    <strong>⏰ 用餐時間：</strong>
+                    如時間許可可安排晚餐（約19:00-20:30）
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">200+款美食</div>
+                    <div class="highlight-item">現場烹調</div>
+                    <div class="highlight-item">環球料理</div>
+                    <div class="highlight-item">優質服務</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第15站 -->
+        <div class="attraction-card fade-in" id="stop15">
+            <div class="card-header gradient-3">
+                <span class="card-number">第15站</span>
+                <h2 class="card-title">🚢 返回香港</h2>
+            </div>
+            <div class="card-body">
+                <img src="返回香港.jpg" alt="回程" class="card-image">
+                <p class="card-description">
+                    結束精彩的澳門一日遊後，前往氹仔碼頭或外港碼頭乘船返回香港。建議預訂晚上10-11點的船班，給自己充足的遊玩時間。金光飛航最後一班為23:59，噴射飛航最後一班為23:00。記得提前30分鐘到達碼頭辦理登船手續。
+                </p>
+                <div class="info-box">
+                    <strong>⏰ 建議船班：</strong>
+                    晚上 22:00 - 23:00
+                    <br>
+                    <strong>💡 溫馨提示：</strong>
+                    提前30分鐘到達碼頭
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">多班次選擇</div>
+                    <div class="highlight-item">便利快捷</div>
+                    <div class="highlight-item">舒適返程</div>
+                    <div class="highlight-item">完美ending</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 旅遊貼士 -->
+        <div class="attraction-card" id="tips">
+            <div class="card-header gradient-4">
+                <h2 class="card-title">💡 旅遊實用貼士</h2>
+            </div>
+            <div class="card-body">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">🎫 預訂建議</h3>
+                        <ul style="line-height: 2;">
+                            <li>船票建議提前網上預訂，享優惠價格</li>
+                            <li>熱門景點如teamLab建議提前購票</li>
+                            <li>餐廳可考慮提前訂位，避免等候</li>
+                            <li>極限運動需提前預約時段</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #f5576c; margin-bottom: 1rem;">💰 預算參考</h3>
+                        <ul style="line-height: 2;">
+                            <li>交通：來回船票約 HKD 280-350</li>
+                            <li>餐飲：約 MOP 300-500/人/日</li>
+                            <li>景點門票：約 MOP 500-1000</li>
+                            <li>總預算：約 HKD 1500-2500/人</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #00f2fe; margin-bottom: 1rem;">📱 實用APP</h3>
+                        <ul style="line-height: 2;">
+                            <li>澳門通APP - 查詢巴士路線</li>
+                            <li>Google Maps - 導航定位</li>
+                            <li>KKday - 預訂優惠門票</li>
+                            <li>OpenRice - 查找餐廳評價</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #fee140; margin-bottom: 1rem;">⚠️ 注意事項</h3>
+                        <ul style="line-height: 2;">
+                            <li>帶備港澳通行證或護照</li>
+                            <li>可在香港兌換澳門幣或直接刷卡</li>
+                            <li>夏季注意防曬，冬季帶備外套</li>
+                            <li>部分景點需穿著運動鞋</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+        <h3>✈️ 準備好開始你的澳門之旅了嗎？</h3>
+        <p>這個行程涵蓋了澳門最精彩的15個站點</p>
+        <p>從早玩到晚，體驗美食、文化、娛樂與冒險</p>
+        <p style="margin-top: 2rem; opacity: 0.6;">© 2025 澳門一日遊攻略 | 祝你旅途愉快</p>
+    </footer>
+
+    <!-- 返回頂部按鈕 -->
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                backToTop.classList.add('show');
+            } else {
+                navbar.classList.remove('scrolled');
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // 返回顶部
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 搜索功能
+        document.querySelector('.search-box input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.attraction-card');
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.attraction-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
